@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beauty – Under uppbyggnad</title>
+  <meta name="description" content="Vi bygger något vackert. Snart lanserar vi." />
+
+  <!-- En snygg gratis-font (Google Fonts). Kan tas bort om du vill vara helt offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#f7f5ff;
+      --ink:#1b1b1f;
+      --muted:#5a5a66;
+      --card: rgba(255,255,255,.72);
+      --stroke: rgba(20,20,30,.10);
+      --shadow: 0 18px 60px rgba(20, 10, 40, .10);
+      --radius: 22px;
+    }
+   body{
+  margin:0;
+  color:var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+    }
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:20px;
+      align-items:stretch;
+    }
+    @media (max-width: 880px){
+      .wrap{grid-template-columns:1fr}
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding: 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--stroke);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:50%;
+      background: #ff4da6;
+      box-shadow: 0 0 0 6px rgba(255,77,166,.12);
+    }
+    h1{
+      margin: 16px 0 10px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+    }
+    p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 600;
+      cursor:pointer;
+      text-decoration:none;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 25px rgba(20,10,40,.08); background:#fff;}
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, #ff4da6, #7c5cff);
+      color: white;
+      box-shadow: 0 14px 35px rgba(124,92,255,.22);
+    }
+    .btn.primary:hover{box-shadow: 0 18px 45px rgba(124,92,255,.28);}
+
+    .mini{
+      display:grid;
+      gap:12px;
+    }
+    .panel{
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .panel h2{
+      margin: 0 0 6px;
+      font-size: 14px;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .footer{
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    /* lite “beauty”-glow-dekoration */
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:260px;height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,77,166,.35), rgba(124,92,255,.0) 60%);
+      transform: rotate(15deg);
+    }
+    .card:after{
+      content:"";
+      position:absolute;
+      inset:auto auto -140px -140px;
+      width:300px;height:300px;
+      background: radial-gradient(circle at 60% 60%, rgba(124,92,255,.30), rgba(255,77,166,.0) 62%);
+    }
+    .card > *{position:relative; z-index:1;}
+    input{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.8);
+      font-size: 15px;
+    }
+    .small{
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <span class="badge"><span class="dot"></span> Under uppbyggnad</span>
+
+      <h1>Vi bygger något riktigt vackert.</h1>
+      <p>
+        Snart lanserar vi en ny beauty-upplevelse. Under tiden: lämna din mail så hör vi av oss när det är live.
+      </p>
+
+      <!-- OBS: Detta formulär skickar ingenstans utan backend.
+           För “fake it till you make it” kan du länka knappen till en mailto istället (se knapparna). -->
+      <label for="email" style="display:block; font-weight:600; margin: 6px 0 8px;">Få en ping vid lansering</label>
+      <input id="email" type="email" placeholder="din@mail.se" autocomplete="email" />
+
+      <div class="ctaRow">
+        <a class="btn primary" id="notifyBtn" href="mailto:hello@dindomän.se?subject=Beauty%20-%20Notifiera%20mig&body=Hej!%20Notifiera%20mig%20n%C3%A4r%20ni%20lanserar.%0A%0AEmail%3A%20">
+          ✨ Notifiera mig
+        </a>
+        <a class="btn" href="#" onclick="alert('Lägg in din Instagram/TikTok-länk här 🙂'); return false;">
+          📷 Följ oss
+        </a>
+      </div>
+
+      <div class="footer">
+        <span>© <span id="year"></span> Beauty</span>
+        <span id="status">Status: design + innehåll pågår</span>
+      </div>
+    </section>
+
+    <aside class="mini">
+      <div class="panel">
+        <h2>Vad kommer</h2>
+        <ul class="list">
+          <li>Nyheter & guider</li>
+          <li>Produktfavoriter</li>
+          <li>Rutiner & tips</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Kontakt</h2>
+        <p style="margin:0;color:var(--muted);line-height:1.7;">
+          Skriv till oss: <a href="mailto:hello@dindomän.se">hello@dindomän.se</a><br/>
+          (Byt till din riktiga adress)
+        </p>
+        <p class="small">Tips: Publicera den här sidan direkt, och fyll på resten senare.</p>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // Sätter årtal
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fyll mailto med angiven email om man skriver i fältet
+    const email = document.getElementById("email");
+    const btn = document.getElementById("notifyBtn");
+    const baseHref = btn.getAttribute("href");
+
+    email.addEventListener("input", () => {
+      const val = encodeURIComponent(email.value || "");
+      btn.setAttribute("href", baseHref + val);
+    });
+  </script>
+</body>
+</html>
